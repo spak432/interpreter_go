@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"interpreter/interpreter"
 	"interpreter/lexer"
+	"interpreter/parser"
 	"os"
 )
 
@@ -14,7 +15,7 @@ func main() {
 		fmt.Print(">> ")
 		s.Scan()
 		input := s.Text()
-		inter := interpreter.NewInterpreter(lexer.NewLexer(input))
-		fmt.Println(inter.Expr())
+		inter := interpreter.NewInterpreter(parser.NewParser(lexer.NewLexer(input)))
+		fmt.Println(inter.Interpret())
 	}
 }
